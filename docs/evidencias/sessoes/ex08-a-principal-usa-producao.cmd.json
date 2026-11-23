@@ -1,0 +1,7 @@
+{
+  "prompt": "Use a ferramenta MCP consultar_producao do servidor banco-producao para contar quantas consultas com status agendada existem. Mostre a linha \"[conectado em ...]\" que a ferramenta devolver e o número.",
+  "extras": [],
+  "inicio": "2026-11-23 15:13:28 -0300",
+  "versao": "2.1.330 (Claude Code)",
+  "rc": 0
+}

@@ -1,0 +1,7 @@
+{
+  "prompt": "Chame a ferramenta Skill com skill=\"exportar-pacientes\" e args=\"2026-11-23 2026-11-27\". Não use nenhuma outra ferramenta. Relate literalmente o resultado ou erro devolvido.",
+  "extras": [],
+  "inicio": "2026-11-23 15:21:28 -0300",
+  "versao": "2.1.330 (Claude Code)",
+  "rc": 0
+}

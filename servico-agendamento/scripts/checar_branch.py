@@ -25,7 +25,8 @@ NOME_VALIDO = re.compile(r"^[A-Za-z0-9._/-]+$")
 
 def rodar(cmd: list[str], cwd: Path) -> None:
     proc = subprocess.run(cmd, cwd=cwd, capture_output=True, text=True)
-    print(f"$ {' '.join(Path(c).name if i == 0 else c for i, c in enumerate(cmd))}  (exit {proc.returncode})")
+    exibido = " ".join(Path(c).name if i == 0 else c for i, c in enumerate(cmd))
+    print(f"$ {exibido}  (exit {proc.returncode})")
     print((proc.stdout + proc.stderr).strip()[-4000:] or "(sem saída)")
     print()
 

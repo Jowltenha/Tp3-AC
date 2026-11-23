@@ -54,7 +54,7 @@ def consultar(sql: str) -> str:
         cur = conn.execute(sql)
         colunas = [c[0] for c in cur.description]
         linhas = cur.fetchmany(50)
-    corpo = "\n".join(" | ".join(map(str, l)) for l in linhas)
+    corpo = "\n".join(" | ".join(map(str, linha)) for linha in linhas)
     return f"[conectado em {dsn_mascarado()}]\n{' | '.join(colunas)}\n{corpo}"
 
 

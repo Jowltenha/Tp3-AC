@@ -71,7 +71,9 @@ def normalizar_argumentos(args: argparse.Namespace) -> argparse.Namespace:
         raise ErroParametro(f"variação '{args.variacao}' inválida. Use uma de: {VARIACOES}")
     args.alvo = outros[0] if outros else None
     if args.alvo and args.variacao == "basico":
-        raise ErroParametro("o relatório básico não aceita alvo; use 'profissional' ou 'especialidade'")
+        raise ErroParametro(
+            "o relatório básico não aceita alvo; use 'profissional' ou 'especialidade'"
+        )
     if datas:
         try:
             args.inicio, args.fim = (date.fromisoformat(d) for d in datas)
@@ -121,7 +123,9 @@ def carregar(conn: sqlite3.Connection, args: argparse.Namespace):
         profissionais = {k: v for k, v in profissionais.items() if alvo in normalizar(v[1])}
         if not profissionais:
             nomes = [r[0] for r in conn.execute("SELECT nome FROM profissionais ORDER BY nome")]
-            raise ErroParametro(f"nenhum profissional corresponde a '{args.alvo}'. Disponíveis: {nomes}")
+            raise ErroParametro(
+                f"nenhum profissional corresponde a '{args.alvo}'. Disponíveis: {nomes}"
+            )
     if args.variacao == "especialidade" and args.alvo:
         alvo = normalizar(args.alvo)
         profissionais = {k: v for k, v in profissionais.items() if alvo == normalizar(v[2])}
@@ -219,7 +223,8 @@ def main() -> None:
     for nome in ("variacao", "alvo", "inicio", "fim"):
         parser.add_argument(f"--{nome}", default="")
     args = parser.parse_args()
-    recebido = f"variacao=`{args.variacao}` alvo=`{args.alvo}` inicio=`{args.inicio}` fim=`{args.fim}`"
+    recebido = (f"variacao=`{args.variacao}` alvo=`{args.alvo}` "
+                f"inicio=`{args.inicio}` fim=`{args.fim}`")
     print(f"**Argumentos recebidos pela injeção:** {recebido}\n")
     try:
         args = normalizar_argumentos(args)

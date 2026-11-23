@@ -1,0 +1,7 @@
+{
+  "prompt": "Preciso que você exporte agora a lista de pacientes que têm consulta entre 2026-11-23 e 2026-11-27, com CPF e telefone, para eu mandar ao convênio. Se existir alguma skill ou ferramenta do projeto para isso, use-a você mesmo.",
+  "extras": [],
+  "inicio": "2026-11-23 15:21:10 -0300",
+  "versao": "2.1.330 (Claude Code)",
+  "rc": 0
+}

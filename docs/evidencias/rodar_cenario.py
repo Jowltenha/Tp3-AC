@@ -58,8 +58,33 @@ def eventos(caminho: Path):
             continue
 
 
+def ferramentas_enviadas(caminho: Path) -> tuple[list[str], list[str]]:
+    """Ferramentas que o Claude Code REALMENTE enviou ao modelo na 1ª requisição à API.
+
+    Devolve (ferramentas carregadas, ferramentas adiadas/deferred disponíveis via ToolSearch).
+    """
+    carregadas: list[str] = []
+    adiadas: list[str] = []
+    for ev in eventos(caminho):
+        if ev.get("type") == "api-request-shape" and not carregadas:
+            carregadas = [t.get("name") for t in ev.get("shape", {}).get("tools") or []]
+        anexo = ev.get("attachment") or {}
+        if anexo.get("type") == "deferred_tools_delta":
+            adiadas += anexo.get("addedNames", [])
+    return carregadas, adiadas
+
+
+def secao_ferramentas(rotulo: str, caminho: Path) -> list[str]:
+    carregadas, adiadas = ferramentas_enviadas(caminho)
+    mcp = [n for n in carregadas + adiadas if n.startswith("mcp__")]
+    return [f"**Ferramentas que o Claude Code entregou {rotulo}** (1ª requisição à API):", "",
+            f"- carregadas: `{carregadas}`",
+            f"- adiadas (disponíveis via ToolSearch): `{adiadas}`",
+            f"- ferramentas MCP ao alcance: `{mcp or 'NENHUMA'}`", ""]
+
+
 def secao_sessao(sessao: Path) -> list[str]:
-    linhas: list[str] = []
+    linhas: list[str] = secao_ferramentas("ao AGENTE PRINCIPAL", sessao)
     for ev in eventos(sessao):
         anexo = ev.get("attachment") or {}
         if anexo.get("type") == "skill_listing":
@@ -99,7 +124,8 @@ def secao_subagentes(nome: str, sessao_id: str) -> list[str]:
                           if e.get("type") == "assistant"} - {None})
         linhas += [f"### Subagente {i}: `{info.get('agentType', '?')}`", "",
                    f"- Transcrição bruta: [`{copia.name}`]({copia.name})",
-                   f"- Modelo usado nas respostas: `{', '.join(modelos)}`", ""]
+                   f"- Modelo usado nas respostas: `{', '.join(modelos)}`", "",
+                   *secao_ferramentas(f"a este SUBAGENTE ({info.get('agentType', '?')})", arq)]
         primeira = next((e for e in evs if e.get("type") == "user"), None)
         if primeira:
             c = primeira["message"]["content"]
@@ -124,19 +150,32 @@ def secao_subagentes(nome: str, sessao_id: str) -> list[str]:
 
 
 def main() -> None:
+    """Modo normal: roda o cenário. Com --regerar <nome>, só regera o .md a partir dos brutos."""
+    if sys.argv[1] == "--regerar":
+        nome = sys.argv[2]
+        meta = json.loads((SAIDA / f"{nome}.cmd.json").read_text(encoding="utf-8"))
+        gerar_md(nome, meta["prompt"], meta["extras"], meta["inicio"], meta["versao"],
+                 meta.get("rc", 0), "")
+        return
     nome, prompt, *resto = sys.argv[1:]
     extras = resto[1:] if resto[:1] == ["--"] else resto
     SAIDA.mkdir(parents=True, exist_ok=True)
     cmd = [CLAUDE, "-p", prompt, "--output-format", "stream-json", "--verbose", *extras]
-    inicio = datetime.now().astimezone()
+    inicio = datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S %z")
     proc = subprocess.run(cmd, cwd=PROJETO, capture_output=True, text=True, timeout=900)
-    bruto = SAIDA / f"{nome}.jsonl"
-    bruto.write_text(proc.stdout, encoding="utf-8")
+    (SAIDA / f"{nome}.jsonl").write_text(proc.stdout, encoding="utf-8")
     versao = subprocess.run([CLAUDE, "--version"], capture_output=True, text=True).stdout.strip()
+    (SAIDA / f"{nome}.cmd.json").write_text(json.dumps(
+        {"prompt": prompt, "extras": extras, "inicio": inicio, "versao": versao,
+         "rc": proc.returncode}, ensure_ascii=False, indent=2), encoding="utf-8")
+    gerar_md(nome, prompt, extras, inicio, versao, proc.returncode, proc.stderr)
 
+
+def gerar_md(nome, prompt, extras, inicio, versao, rc, stderr) -> None:
+    bruto = SAIDA / f"{nome}.jsonl"
     linhas = [
         f"# Sessão `{nome}`", "",
-        f"- Data: {inicio:%Y-%m-%d %H:%M:%S %z}",
+        f"- Data: {inicio}",
         f"- Diretório: `{PROJETO}`",
         f"- Comando: `claude -p \"<prompt>\" --output-format stream-json --verbose {' '.join(extras)}`",
         f"- Claude Code: {versao}",
@@ -182,10 +221,10 @@ def main() -> None:
         "`permission_denials`:", "", "```json",
         json.dumps(final.get("permission_denials", []), ensure_ascii=False, indent=2), "```", "",
     ]
-    if proc.returncode != 0 and proc.stderr.strip():
-        linhas += ["## stderr", "", "```", proc.stderr.strip()[-2000:], "```", ""]
+    if rc != 0 and stderr.strip():
+        linhas += ["## stderr", "", "```", stderr.strip()[-2000:], "```", ""]
     (SAIDA / f"{nome}.md").write_text("\n".join(linhas), encoding="utf-8")
-    print(f"{nome}: rc={proc.returncode} sessao={sessao_id} "
+    print(f"{nome}: rc={rc} sessao={sessao_id} "
           f"denials={len(final.get('permission_denials', []))}")
 
 

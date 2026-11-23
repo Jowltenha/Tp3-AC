@@ -1,0 +1,7 @@
+{
+  "prompt": "@agent-revisor-codigo revise o código Python novo da branch feature/encaixe-horarios (git diff main...feature/encaixe-horarios) antes do merge.",
+  "extras": [],
+  "inicio": "2026-11-23 15:23:16 -0300",
+  "versao": "2.1.330 (Claude Code)",
+  "rc": 0
+}

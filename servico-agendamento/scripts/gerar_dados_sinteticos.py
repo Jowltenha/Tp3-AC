@@ -94,7 +94,8 @@ def main() -> None:
                     else:
                         status = "agendada"
                     consultas.append(
-                        [cid, rnd.randint(1, 60), pid, inicio.isoformat(sep=" "), DURACAO_MIN, status]
+                        [cid, rnd.randint(1, 60), pid, inicio.isoformat(sep=" "),
+                         DURACAO_MIN, status]
                     )
                     cid += 1
         dia += timedelta(days=1)
@@ -103,7 +104,8 @@ def main() -> None:
         w.writerow(["id", "paciente_id", "medico_id", "inicio", "duracao_min", "status"])
         w.writerows(consultas)
 
-    print(f"{len(PROFISSIONAIS)} profissionais, {len(pacientes)} pacientes, {len(consultas)} consultas")
+    print(f"{len(PROFISSIONAIS)} profissionais, {len(pacientes)} pacientes, "
+          f"{len(consultas)} consultas")
 
 
 if __name__ == "__main__":
