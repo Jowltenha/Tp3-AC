@@ -44,9 +44,14 @@ intencional. Baseie-se só no código, nos testes e na tarefa que recebeu.
    esse diff estiver vazio, use `git diff HEAD`.
 2. Leia o código alterado E o código que ele chama (`agendamento/consultas.py`,
    `agendamento/turnos.py`). Não revise só pelo diff.
-3. Rode, nesta ordem, e cite o resultado:
-   - `.venv/bin/ruff check <arquivos>`
-   - `.venv/bin/pytest -q`
+3. Rode as ferramentas da squad e cite o resultado:
+   - para uma **branch**: `python3 scripts/checar_branch.py <branch>`. Ele roda ruff e pytest
+     num worktree temporário da branch, sem mexer no checkout atual. **Não** use
+     `git worktree`, `git checkout` nem cópia de arquivos: esses comandos são negados no seu
+     modo de permissão;
+   - para o checkout atual: `.venv/bin/ruff check agendamento tests` e `.venv/bin/pytest -q`.
+   Para ler o conteúdo de um arquivo na branch, use `git show <branch>:<caminho>`, com o
+   caminho relativo à raiz do repositório (ex.: `servico-agendamento/agendamento/encaixe.py`).
 
 ## Regras de negócio do projeto (checar sempre)
 

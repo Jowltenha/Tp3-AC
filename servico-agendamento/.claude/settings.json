@@ -10,6 +10,7 @@
       "Bash(git log *)",
       "Bash(git show *)",
       "Bash(python3 scripts/consultar_local.py *)",
+      "Bash(python3 scripts/checar_branch.py *)",
       "mcp__banco-producao__consultar_producao"
     ],
     "deny": [
