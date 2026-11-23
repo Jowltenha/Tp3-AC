@@ -1,0 +1,61 @@
+id;nome;cpf;data_nascimento;telefone;convenio
+1;Sílvia Simulado Souza;000.001.277-81;1961-09-28;(21) 90000-0001;Plano Bronze
+2;Marina Fictício Rocha;000.002.770-19;1962-07-21;(21) 90000-0002;Particular
+3;Diego Sintética Pereira;000.003.450-69;1991-01-02;(21) 90000-0003;Particular
+4;Bruno Simulado Alves;000.004.300-71;1964-12-21;(21) 90000-0004;Particular
+5;Nelson Simulado Gomes;000.005.696-93;2003-07-24;(21) 90000-0005;Plano Ouro
+6;Renato Teste Pereira;000.006.416-48;1966-01-11;(21) 90000-0006;Plano Bronze
+7;Paulo Fictício Pereira;000.007.115-64;2009-11-17;(21) 90000-0007;Particular
+8;Fábio Fictício Carvalho;000.008.558-81;1971-07-24;(21) 90000-0008;Plano Ouro
+9;Elisa Exemplo Lima;000.009.812-64;2017-04-11;(21) 90000-0009;Plano Prata
+10;João Exemplo Gomes;000.010.512-33;2019-07-10;(21) 90000-0010;Plano Prata
+11;Tiago Sintética Ribeiro;000.011.329-15;2013-02-08;(21) 90000-0011;Plano Ouro
+12;Bruno Exemplo Rocha;000.012.502-69;1980-04-16;(21) 90000-0012;Plano Prata
+13;Hugo Simulado Gomes;000.013.366-87;1989-05-01;(21) 90000-0013;Particular
+14;Karina Exemplo Alves;000.014.917-51;2008-10-05;(21) 90000-0014;Particular
+15;Marina Teste Rocha;000.015.197-62;2014-12-03;(21) 90000-0015;Particular
+16;Elisa Sintética Gomes;000.016.292-51;2014-10-17;(21) 90000-0016;Plano Bronze
+17;Karina Sintética Alves;000.017.825-13;1974-11-10;(21) 90000-0017;Plano Ouro
+18;Carla Exemplo Alves;000.018.542-88;2014-02-22;(21) 90000-0018;Plano Ouro
+19;Marina Simulado Alves;000.019.704-46;1952-05-25;(21) 90000-0019;Plano Bronze
+20;Renato Teste Souza;000.020.290-83;1984-03-28;(21) 90000-0020;Plano Bronze
+21;Renato Fictício Pereira;000.021.459-85;1978-12-16;(21) 90000-0021;Particular
+22;Leonardo Exemplo Alves;000.022.431-93;2000-10-21;(21) 90000-0022;Plano Bronze
+23;João Fictício Rocha;000.023.371-41;1999-10-03;(21) 90000-0023;Plano Prata
+24;Hugo Sintética Souza;000.024.258-96;2003-12-03;(21) 90000-0024;Plano Bronze
+25;Diego Fictício Alves;000.025.558-90;1996-03-04;(21) 90000-0025;Plano Ouro
+26;Ana Simulado Carvalho;000.026.628-26;2007-06-27;(21) 90000-0026;Particular
+27;Bruno Sintética Alves;000.027.559-31;1955-12-24;(21) 90000-0027;Plano Bronze
+28;Nelson Fictício Ribeiro;000.028.897-43;1979-07-14;(21) 90000-0028;Plano Ouro
+29;Marina Sintética Lima;000.029.921-55;2021-02-13;(21) 90000-0029;Plano Prata
+30;Marina Teste Gomes;000.030.262-83;2019-06-18;(21) 90000-0030;Particular
+31;Paulo Exemplo Carvalho;000.031.755-46;2006-02-26;(21) 90000-0031;Plano Prata
+32;Bruno Sintética Lima;000.032.573-47;1986-11-02;(21) 90000-0032;Plano Ouro
+33;Carla Simulado Ribeiro;000.033.207-17;1958-05-01;(21) 90000-0033;Plano Bronze
+34;Gabriela Exemplo Pereira;000.034.915-94;1986-06-20;(21) 90000-0034;Plano Bronze
+35;João Fictício Gomes;000.035.199-59;1981-10-20;(21) 90000-0035;Plano Ouro
+36;Tiago Sintética Alves;000.036.873-79;1996-10-21;(21) 90000-0036;Plano Prata
+37;Carla Exemplo Souza;000.037.622-48;1995-03-01;(21) 90000-0037;Plano Ouro
+38;Bruno Exemplo Carvalho;000.038.484-69;1963-10-01;(21) 90000-0038;Plano Ouro
+39;Gabriela Sintética Carvalho;000.039.542-13;1999-04-05;(21) 90000-0039;Plano Bronze
+40;Bruno Simulado Gomes;000.040.428-76;1983-04-27;(21) 90000-0040;Particular
+41;Quitéria Sintética Souza;000.041.200-55;1997-09-01;(21) 90000-0041;Plano Prata
+42;Renato Fictício Pereira;000.042.772-59;1988-11-02;(21) 90000-0042;Plano Ouro
+43;Gabriela Sintética Alves;000.043.130-66;1997-11-06;(21) 90000-0043;Particular
+44;Gabriela Teste Souza;000.044.989-60;1981-02-25;(21) 90000-0044;Plano Bronze
+45;Carla Teste Pereira;000.045.326-34;2001-06-17;(21) 90000-0045;Plano Ouro
+46;Íris Simulado Pereira;000.046.337-58;1973-10-25;(21) 90000-0046;Plano Prata
+47;Karina Exemplo Ribeiro;000.047.876-81;1955-01-05;(21) 90000-0047;Plano Ouro
+48;Ana Exemplo Pereira;000.048.290-65;1953-01-05;(21) 90000-0048;Particular
+49;Tiago Fictício Alves;000.049.771-83;1980-03-06;(21) 90000-0049;Plano Prata
+50;Nelson Teste Lima;000.050.403-15;2022-07-04;(21) 90000-0050;Plano Prata
+51;Paulo Teste Lima;000.051.312-88;2009-01-03;(21) 90000-0051;Plano Bronze
+52;Karina Fictício Ribeiro;000.052.435-90;2003-05-13;(21) 90000-0052;Plano Ouro
+53;Quitéria Fictício Ribeiro;000.053.767-79;1953-01-18;(21) 90000-0053;Plano Bronze
+54;Olívia Exemplo Carvalho;000.054.799-62;1951-08-07;(21) 90000-0054;Particular
+55;Marina Fictício Carvalho;000.055.106-16;1985-09-04;(21) 90000-0055;Plano Bronze
+56;Diego Exemplo Souza;000.056.129-90;1977-01-07;(21) 90000-0056;Plano Ouro
+57;Renato Exemplo Rocha;000.057.779-93;1969-09-22;(21) 90000-0057;Plano Ouro
+58;Íris Sintética Ribeiro;000.058.189-43;1961-07-07;(21) 90000-0058;Plano Bronze
+59;Carla Sintética Pereira;000.059.188-99;1962-07-11;(21) 90000-0059;Plano Bronze
+60;João Teste Pereira;000.060.579-20;1985-08-10;(21) 90000-0060;Plano Prata

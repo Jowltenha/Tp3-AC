@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "banco-producao": {
+      "command": "python3",
+      "args": ["ops/mcp_banco_producao.py"]
+    }
+  }
+}
